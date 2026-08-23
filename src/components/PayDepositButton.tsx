@@ -8,6 +8,17 @@ type Props = {
   className?: string;
 };
 
+function isStripeCheckoutUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol !== "https:") return false;
+    const host = parsed.hostname.toLowerCase();
+    return host === "checkout.stripe.com" || host === "stripe.com" || host.endsWith(".stripe.com");
+  } catch {
+    return false;
+  }
+}
+
 export function PayDepositButton({
   packageId,
   label = "Pay deposit",
@@ -28,6 +39,9 @@ export function PayDepositButton({
       const json = (await res.json()) as { url?: string; error?: string };
       if (!res.ok || !json.url) {
         throw new Error(json.error || "Unable to start checkout");
+      }
+      if (!isStripeCheckoutUrl(json.url)) {
+        throw new Error("Unexpected checkout URL");
       }
       window.location.href = json.url;
     } catch (err) {

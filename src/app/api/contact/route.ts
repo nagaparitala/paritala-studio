@@ -10,11 +10,62 @@ type ContactBody = {
   message?: string;
 };
 
+const LIMITS = {
+  name: 200,
+  email: 254,
+  business: 200,
+  budget: 100,
+  message: 5000,
+} as const;
+
+const RATE_WINDOW_MS = 60_000;
+const RATE_MAX = 5;
+
+type Bucket = { count: number; resetAt: number };
+const rateBuckets = new Map<string, Bucket>();
+
+function clientIp(request: Request): string {
+  const forwarded = request.headers.get("x-forwarded-for");
+  if (forwarded) {
+    return forwarded.split(",")[0]?.trim() || "unknown";
+  }
+  return request.headers.get("x-real-ip") || "unknown";
+}
+
+function rateLimit(ip: string): boolean {
+  const now = Date.now();
+  const bucket = rateBuckets.get(ip);
+  if (!bucket || now >= bucket.resetAt) {
+    rateBuckets.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    return true;
+  }
+  if (bucket.count >= RATE_MAX) {
+    return false;
+  }
+  bucket.count += 1;
+  return true;
+}
+
 function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function redactEmail(email: string): string {
+  const [local, domain] = email.split("@");
+  if (!domain) return "[redacted]";
+  const hint = local.slice(0, 1) || "?";
+  return `${hint}***@${domain}`;
+}
+
 export async function POST(request: Request) {
+  const ip = clientIp(request);
+  if (!rateLimit(ip)) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again shortly." },
+      { status: 429 },
+    );
+  }
+
   let body: ContactBody;
   try {
     body = (await request.json()) as ContactBody;
@@ -34,10 +85,19 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-  if (!isEmail(email)) {
+  if (name.length > LIMITS.name) {
+    return NextResponse.json({ error: "Name is too long." }, { status: 400 });
+  }
+  if (email.length > LIMITS.email || !isEmail(email)) {
     return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
   }
-  if (message.length > 5000) {
+  if (business.length > LIMITS.business) {
+    return NextResponse.json({ error: "Business name is too long." }, { status: 400 });
+  }
+  if (budget.length > LIMITS.budget) {
+    return NextResponse.json({ error: "Budget field is too long." }, { status: 400 });
+  }
+  if (message.length > LIMITS.message) {
     return NextResponse.json({ error: "Message is too long." }, { status: 400 });
   }
 
@@ -50,20 +110,35 @@ export async function POST(request: Request) {
     message,
   };
 
-  // Always log server-side
-  console.info("[contact]", JSON.stringify(entry));
+  // Log metadata only — no full PII or message body
+  console.info(
+    "[contact]",
+    JSON.stringify({
+      at: entry.at,
+      email: redactEmail(email),
+      nameLength: name.length,
+      messageLength: message.length,
+      hasBusiness: Boolean(business),
+      hasBudget: Boolean(budget),
+    }),
+  );
 
-  // Persist locally (works on Vercel only ephemerally; fine for local/dev)
-  try {
-    const dir = path.join(process.cwd(), ".data");
-    await mkdir(dir, { recursive: true });
-    await appendFile(
-      path.join(dir, "contact-submissions.jsonl"),
-      `${JSON.stringify(entry)}\n`,
-      "utf8",
-    );
-  } catch (err) {
-    console.warn("[contact] file store skipped:", err);
+  // Persist locally only outside production (ephemeral on Vercel anyway)
+  if (process.env.NODE_ENV !== "production") {
+    try {
+      const dir = path.join(process.cwd(), ".data");
+      await mkdir(dir, { recursive: true });
+      await appendFile(
+        path.join(dir, "contact-submissions.jsonl"),
+        `${JSON.stringify(entry)}\n`,
+        "utf8",
+      );
+    } catch (err) {
+      console.warn(
+        "[contact] file store skipped:",
+        err instanceof Error ? err.message : "error",
+      );
+    }
   }
 
   // Optional Resend email when configured
@@ -93,11 +168,13 @@ export async function POST(request: Request) {
         }),
       });
       if (!res.ok) {
-        const text = await res.text();
-        console.warn("[contact] Resend failed:", res.status, text);
+        console.warn("[contact] Resend failed:", res.status);
       }
     } catch (err) {
-      console.warn("[contact] Resend error:", err);
+      console.warn(
+        "[contact] Resend error:",
+        err instanceof Error ? err.message : "error",
+      );
     }
   }
 

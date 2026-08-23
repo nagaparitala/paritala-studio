@@ -4,6 +4,37 @@ import { packages } from "@/lib/site";
 
 type Body = { packageId?: string };
 
+function allowlistedBases(): string[] {
+  const bases = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    "https://refresh-studios.vercel.app",
+    "https://refresh-studios-nparitala-projects.vercel.app",
+  ];
+  return [
+    ...new Set(
+      bases
+        .filter((v): v is string => Boolean(v && v.trim()))
+        .map((v) => v.replace(/\/$/, "")),
+    ),
+  ];
+}
+
+/** Prefer NEXT_PUBLIC_SITE_URL; otherwise only an allowlisted Origin. Never trust raw Origin alone. */
+function resolveCheckoutBase(request: Request): string | null {
+  const allowed = allowlistedBases();
+  const preferred = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
+  if (preferred && allowed.includes(preferred)) {
+    return preferred;
+  }
+
+  const originHeader = request.headers.get("origin")?.replace(/\/$/, "") || "";
+  if (originHeader && allowed.includes(originHeader)) {
+    return originHeader;
+  }
+
+  return null;
+}
+
 export async function POST(request: Request) {
   let body: Body;
   try {
@@ -30,10 +61,13 @@ export async function POST(request: Request) {
     );
   }
 
-  const origin =
-    request.headers.get("origin") ||
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    "http://localhost:3000";
+  const base = resolveCheckoutBase(request);
+  if (!base) {
+    return NextResponse.json(
+      { error: "Checkout redirects are not configured for this origin." },
+      { status: 400 },
+    );
+  }
 
   try {
     const stripe = getStripe();
@@ -53,8 +87,8 @@ export async function POST(request: Request) {
           },
         },
       ],
-      success_url: `${origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/checkout/cancel`,
+      success_url: `${base}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${base}/checkout/cancel`,
       metadata: {
         packageId: pkg.id,
         packageName: pkg.name,
@@ -70,7 +104,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ url: session.url });
   } catch (err) {
-    console.error("[checkout]", err);
+    console.error("[checkout]", err instanceof Error ? err.message : "error");
     return NextResponse.json(
       { error: "Unable to create checkout session." },
       { status: 500 },
