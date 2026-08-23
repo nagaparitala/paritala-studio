@@ -12,15 +12,11 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-        Services
-      </p>
       <h1 className="display mt-3 text-4xl text-foreground sm:text-5xl">
-        Built for small businesses
+        Clear scope. Clear price.
       </h1>
       <p className="mt-4 max-w-2xl text-muted">
-        Clear pricing, custom design, modern stack. Prefer a conversation first?
-        Email{" "}
+        Prefer a conversation first? Email{" "}
         <a className="text-accent-soft hover:underline" href={`mailto:${site.email}`}>
           {site.email}
         </a>{" "}
@@ -31,12 +27,9 @@ export default function ServicesPage() {
         .
       </p>
 
-      <ul className="mt-12 grid gap-4 sm:grid-cols-2">
+      <ul className="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-2">
         {services.map((s) => (
-          <li
-            key={s.title}
-            className="rounded-2xl border border-border bg-surface p-6"
-          >
+          <li key={s.title} className="border-t border-border pt-5">
             <h2 className="text-lg font-medium text-foreground">{s.title}</h2>
             <p className="mt-2 text-sm text-muted leading-relaxed">{s.body}</p>
           </li>
@@ -48,22 +41,20 @@ export default function ServicesPage() {
           Pricing
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-muted">
-          Two options. Pay via Stripe Checkout when you’re ready to start.
-          Payments are refundable if we don’t kick off within 14 days.
+          Two options. Pay via Stripe Checkout when you’re ready. Refundable if
+          we don’t kick off within 14 days.
         </p>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-8 lg:grid-cols-2">
           {packages.map((pkg) => (
             <div
               key={pkg.id}
-              className={`flex flex-col rounded-3xl border p-6 sm:p-8 ${
-                pkg.popular
-                  ? "border-foreground/40 bg-surface-elevated shadow-[0_0_0_1px_rgba(10,10,10,0.12)]"
-                  : "border-border bg-surface"
+              className={`flex flex-col border-t-2 pt-6 ${
+                pkg.popular ? "border-accent" : "border-border"
               }`}
             >
               {pkg.popular && (
-                <span className="mb-3 w-fit rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent-soft">
+                <span className="mb-3 text-xs font-semibold uppercase tracking-wider text-accent">
                   Most chosen
                 </span>
               )}
@@ -84,12 +75,7 @@ export default function ServicesPage() {
               </p>
               <ul className="mt-6 flex-1 space-y-2 text-sm text-muted">
                 {pkg.features.map((f) => (
-                  <li key={f} className="flex gap-2">
-                    <span className="text-accent" aria-hidden>
-                      ✓
-                    </span>
-                    {f}
-                  </li>
+                  <li key={f}>{f}</li>
                 ))}
               </ul>
               <div className="mt-8">
@@ -103,7 +89,7 @@ export default function ServicesPage() {
                   className={
                     pkg.popular
                       ? "bg-accent text-background hover:bg-accent-soft"
-                      : "border border-border text-foreground hover:border-accent/40"
+                      : "border border-border text-foreground hover:border-accent"
                   }
                 />
               </div>

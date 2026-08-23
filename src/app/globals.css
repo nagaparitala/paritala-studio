@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  /* Top-right brand panel: warm beige paper + solid black */
-  --background: #f3e6d0;
-  --foreground: #0a0a0a;
-  --muted: #5a5248;
-  --surface: #ebe0cb;
-  --surface-elevated: #e4d7be;
-  --border: #c9b89a;
-  --accent: #0a0a0a;
-  --accent-soft: #1a1a1a;
-  --accent-deep: #2e2e2e;
-  --success: #2f6b45;
-  --danger: #9b3b2e;
+  /* Top-left logo panel: charcoal ground + metallic silver */
+  --background: #121314;
+  --foreground: #e6e8ea;
+  --muted: #9aa0a6;
+  --surface: #1a1c1e;
+  --surface-elevated: #222528;
+  --border: #3a3f44;
+  --accent: #c8ccd0;
+  --accent-soft: #dfe2e5;
+  --accent-deep: #8b9198;
+  --accent-hairline: #c4a574;
+  --success: #6f9f7e;
+  --danger: #d08072;
 }
 
 @theme inline {
@@ -25,6 +26,7 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-accent-deep: var(--accent-deep);
+  --color-accent-hairline: var(--accent-hairline);
   --color-success: var(--success);
   --color-danger: var(--danger);
   --font-sans: var(--font-sans);
@@ -35,14 +37,21 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans), "Source Sans 3", system-ui, sans-serif;
+  letter-spacing: 0.01em;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--foreground) 18%, transparent);
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
   color: var(--foreground);
 }
 
@@ -55,17 +64,31 @@ body {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  opacity: 0.045;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   z-index: 1;
 }
 
 .display {
-  font-family: var(--font-display), Georgia, serif;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display), "Bricolage Grotesque", system-ui, sans-serif;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
 .focus-ring:focus-visible {
-  outline: 2px solid var(--foreground);
+  outline: 2px solid var(--accent-soft);
   outline-offset: 3px;
+}
+
+.hairline {
+  border-color: color-mix(in srgb, var(--accent-hairline) 45%, var(--border));
 }

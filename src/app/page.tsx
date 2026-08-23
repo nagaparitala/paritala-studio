@@ -1,30 +1,18 @@
 import Link from "next/link";
-import { howItWorks, services, site } from "@/lib/site";
+import { howItWorks, packages, site } from "@/lib/site";
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-foreground/5 blur-3xl"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-32 left-1/4 h-72 w-72 rounded-full bg-foreground/8 blur-3xl"
-        />
+      <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:py-32">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-            {site.name}
-          </p>
-          <h1 className="display mt-4 max-w-3xl text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl">
-            Websites that make small businesses look unmistakably premium.
+          <h1 className="display max-w-3xl text-4xl text-foreground sm:text-5xl lg:text-6xl">
+            Websites small businesses can run — inventory, payments, leads.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            We’re a small-business web agency led by {site.owner}. We design
-            and build custom Next.js sites for owners who want clarity, speed,
-            and real integrations — not another cookie-cutter theme.
+            {site.name} is led by {site.owner}. We design and build custom
+            Next.js sites for owners who want clarity and real integrations —
+            not another cookie-cutter theme.
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
@@ -35,129 +23,102 @@ export default function HomePage() {
             </Link>
             <Link
               href="/work/garage-mahal"
-              className="focus-ring inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition hover:border-accent/50 hover:text-accent-soft"
+              className="focus-ring inline-flex items-center justify-center px-2 py-3 text-sm font-medium text-muted underline-offset-4 transition hover:text-foreground hover:underline"
             >
-              See Garage Mahal case study
+              Garage Mahal case study
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Services teaser */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 className="display text-3xl text-foreground sm:text-4xl">
-                What we do
+                What we ship
               </h2>
               <p className="mt-2 max-w-lg text-muted">
-                End-to-end websites for local businesses ready to grow online.
+                Design, build, and wire the workflows your business actually
+                needs.
               </p>
             </div>
             <Link
-              href="/services"
+              href="/services#pricing"
               className="focus-ring text-sm font-medium text-accent hover:text-accent-soft"
             >
-              View pricing →
+              Pricing →
             </Link>
           </div>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
-            {services.map((s) => (
-              <li
-                key={s.title}
-                className="rounded-2xl border border-border bg-surface p-6 transition hover:border-accent/30"
-              >
-                <h3 className="text-lg font-medium text-foreground">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{s.body}</p>
+          <ul className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2">
+            {[
+              {
+                title: "Custom design",
+                body: "Brand-forward UI sized for your pages and offers — not a theme skin.",
+              },
+              {
+                title: "Next.js builds",
+                body: "TypeScript App Router sites that stay fast and maintainable.",
+              },
+              {
+                title: "Integrations",
+                body: "DealerCenter, Stripe, forms, financing — connected end to end.",
+              },
+              {
+                title: "Ongoing care",
+                body: "$150/mo maintenance when you want updates without hunting freelancers.",
+              },
+            ].map((item) => (
+              <li key={item.title} className="border-t border-border pt-5">
+                <h3 className="text-lg font-medium text-foreground">
+                  {item.title}
+                </h3>
+                <p className="mt-2 max-w-md text-sm leading-relaxed text-muted">
+                  {item.body}
+                </p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* Case study teaser */}
-      <section className="border-b border-border bg-surface/50">
+      <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-            Featured work
-          </p>
-          <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:items-center">
-            <div>
-              <h2 className="display text-3xl text-foreground sm:text-4xl">
-                Garage Mahal
-              </h2>
-              <p className="mt-4 text-muted leading-relaxed">
-                A Next.js car-dealer experience with DealerCenter inventory
-                sync, financing & trade-in flows, and vehicle detail pages with
-                transparent dealer price breakdown.
-              </p>
-              <ul className="mt-6 space-y-2 text-sm text-muted">
-                <li className="flex gap-2">
-                  <span className="text-accent" aria-hidden>
-                    ▹
-                  </span>
-                  Live inventory from DealerCenter
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-accent" aria-hidden>
-                    ▹
-                  </span>
-                  Financing & trade-in lead flows
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-accent" aria-hidden>
-                    ▹
-                  </span>
-                  Dealer price breakdown on VDP
-                </li>
-              </ul>
-              <p className="mt-4 text-sm text-muted/80">
-                Demo available on request — no public live URL published here.
-              </p>
-              <Link
-                href="/work/garage-mahal"
-                className="focus-ring mt-8 inline-flex rounded-full border border-accent/40 px-5 py-2.5 text-sm font-medium text-accent-soft transition hover:bg-accent/10"
-              >
-                Read the case study
-              </Link>
-            </div>
-            <div
-              className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-surface-elevated"
-              aria-hidden
+          <div className="max-w-3xl">
+            <h2 className="display text-3xl text-foreground sm:text-4xl">
+              Garage Mahal
+            </h2>
+            <p className="mt-4 text-muted leading-relaxed">
+              Next.js dealer site with DealerCenter inventory sync, financing
+              and trade-in lead flows, and vehicle pages with a transparent
+              dealer price breakdown.
+            </p>
+            <ul className="mt-6 space-y-2 text-sm text-muted">
+              <li>Live inventory from DealerCenter</li>
+              <li>Financing & trade-in lead flows</li>
+              <li>Dealer price breakdown on the VDP</li>
+            </ul>
+            <p className="mt-4 text-sm text-muted">
+              Demo on request — no public live URL published here.
+            </p>
+            <Link
+              href="/work/garage-mahal"
+              className="focus-ring mt-8 inline-flex rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground transition hover:border-accent hover:text-accent-soft"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/15 via-transparent to-accent-deep/25" />
-              <div className="absolute inset-6 flex flex-col justify-between rounded-xl border border-border/80 bg-background/60 p-5 backdrop-blur-sm">
-                <div className="flex items-center justify-between text-xs text-muted">
-                  <span>Inventory</span>
-                  <span className="rounded-full bg-accent/20 px-2 py-0.5 text-accent-soft">
-                    Synced
-                  </span>
-                </div>
-                <div>
-                  <p className="display text-2xl text-foreground">2021 BMW X5</p>
-                  <p className="mt-1 text-sm text-muted">Dealer price · transparent fees</p>
-                  <div className="mt-4 h-2 w-2/3 rounded-full bg-accent/40" />
-                  <div className="mt-2 h-2 w-1/2 rounded-full bg-border" />
-                </div>
-              </div>
-            </div>
+              Read the case study
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* How it works */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
           <h2 className="display text-3xl text-foreground sm:text-4xl">
             How it works
           </h2>
-          <ol className="mt-10 grid gap-6 md:grid-cols-3">
+          <ol className="mt-12 grid gap-10 md:grid-cols-3">
             {howItWorks.map((step) => (
-              <li
-                key={step.step}
-                className="rounded-2xl border border-border bg-surface p-6"
-              >
+              <li key={step.step}>
                 <span className="display text-2xl text-accent">{step.step}</span>
                 <h3 className="mt-3 text-lg font-medium text-foreground">
                   {step.title}
@@ -171,28 +132,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section>
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <div className="rounded-3xl border border-border bg-gradient-to-br from-surface-elevated to-surface px-6 py-12 text-center sm:px-12">
+          <div className="max-w-2xl border-t border-border pt-12">
             <h2 className="display text-3xl text-foreground sm:text-4xl">
-              Ready for a site that feels custom?
+              Ready to start?
             </h2>
-            <p className="mx-auto mt-4 max-w-lg text-muted">
-              Tell us about your business. Or start with clear pricing —
-              $250 one-time for design/UI, or $150/month for ongoing maintenance.
-              Payments are refundable if we don’t kick off within 14 days.
+            <p className="mt-4 text-muted leading-relaxed">
+              {packages[0].price} one-time for design/UI, or {packages[1].price}
+              /month for maintenance. Payments refundable if we don’t kick off
+              within 14 days.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/contact"
-                className="focus-ring inline-flex rounded-full bg-accent px-6 py-3 text-sm font-medium text-background hover:bg-accent-soft"
+                className="focus-ring inline-flex justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-background hover:bg-accent-soft"
               >
                 Contact {site.owner.split(" ")[0]}
               </Link>
               <Link
                 href="/services#pricing"
-                className="focus-ring inline-flex rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground hover:border-accent/40"
+                className="focus-ring inline-flex justify-center px-2 py-3 text-sm font-medium text-muted underline-offset-4 hover:text-foreground hover:underline"
               >
                 See pricing
               </Link>

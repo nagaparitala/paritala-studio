@@ -17,7 +17,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link
           href="/"
@@ -27,9 +27,9 @@ export function Header() {
           <Image
             src="/logo.png"
             alt="Refresh Studio"
-            width={604}
-            height={248}
-            className="h-9 w-auto sm:h-10"
+            width={557}
+            height={207}
+            className="h-8 w-auto sm:h-9"
             priority
           />
           <span className="sr-only">{site.name}</span>

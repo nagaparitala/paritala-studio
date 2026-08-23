@@ -11,15 +11,15 @@ export const metadata: Metadata = {
 const highlights = [
   {
     title: "DealerCenter inventory sync",
-    body: "Vehicle listings stay current with the dealer’s DealerCenter feed — stock, photos, and pricing without manual CSV chores.",
+    body: "Listings stay current with the dealer’s DealerCenter feed — stock, photos, and pricing without CSV chores.",
   },
   {
     title: "Financing & trade-in flows",
-    body: "Guided forms that capture credit/trade intent and route leads to the sales team with the context they need.",
+    body: "Guided forms that capture credit/trade intent and route leads with the context sales needs.",
   },
   {
-    title: "Vehicle detail with price breakdown",
-    body: "Transparent dealer pricing on the VDP — fees and totals explained so shoppers don’t bounce at the fine print.",
+    title: "VDP price breakdown",
+    body: "Transparent dealer pricing on the vehicle detail page so shoppers understand the number before they call.",
   },
 ];
 
@@ -37,21 +37,17 @@ export default function GarageMahalPage() {
       </nav>
 
       <header className="mt-8 max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-          Case study
-        </p>
         <h1 className="display mt-3 text-4xl text-foreground sm:text-5xl">
           Garage Mahal
         </h1>
         <p className="mt-4 text-lg text-muted leading-relaxed">
-          A custom Next.js experience for a car dealer that needed live inventory,
-          serious lead capture, and pricing clarity — not another WordPress theme
-          fighting plugins.
+          A custom Next.js experience for a car dealer that needed live
+          inventory, serious lead capture, and pricing clarity — not another
+          WordPress theme fighting plugins.
         </p>
-        <p className="mt-4 rounded-xl border border-border bg-surface px-4 py-3 text-sm text-muted">
-          <strong className="font-medium text-foreground">Demo:</strong> available
-          on request. There is no public live URL published on this site.
-          Email{" "}
+        <p className="mt-6 border-l-2 border-accent pl-4 text-sm text-muted">
+          <strong className="font-medium text-foreground">Demo:</strong>{" "}
+          available on request. No public live URL on this site. Email{" "}
           <a
             className="text-accent-soft underline-offset-2 hover:underline"
             href={`mailto:${site.email}`}
@@ -62,18 +58,9 @@ export default function GarageMahalPage() {
         </p>
       </header>
 
-      <div
-        className="mt-12 aspect-[21/9] overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-accent/15 via-surface to-accent-deep/30"
-        role="img"
-        aria-label="Stylized preview of Garage Mahal dealer UI"
-      />
-
-      <section className="mt-14 grid gap-6 md:grid-cols-3">
+      <section className="mt-14 grid gap-10 border-t border-border pt-10 md:grid-cols-3">
         {highlights.map((h) => (
-          <div
-            key={h.title}
-            className="rounded-2xl border border-border bg-surface p-6"
-          >
+          <div key={h.title}>
             <h2 className="text-lg font-medium text-foreground">{h.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">{h.body}</p>
           </div>
@@ -83,21 +70,19 @@ export default function GarageMahalPage() {
       <section className="mt-14 max-w-3xl space-y-4 text-muted leading-relaxed">
         <h2 className="display text-2xl text-foreground">Approach</h2>
         <p>
-          The stack centers on Next.js App Router for SEO-friendly vehicle pages
-          and fast navigation. Inventory is synced from DealerCenter so the
-          catalog reflects what’s actually on the lot. Lead flows for financing
-          and trade-ins are first-class routes — not buried popups — so mobile
-          shoppers can complete them without friction.
+          Next.js App Router for SEO-friendly vehicle pages and fast navigation.
+          Inventory syncs from DealerCenter so the catalog matches the lot.
+          Financing and trade-in are first-class routes — not buried popups —
+          so mobile shoppers can finish them.
         </p>
         <p>
-          On each vehicle detail page, the dealer price breakdown surfaces
-          components of the total so buyers understand the number before they
-          call. That transparency is a conversion feature as much as a trust
-          signal.
+          On each vehicle detail page, the dealer price breakdown surfaces the
+          total’s components. Transparency is a conversion feature, not just a
+          trust signal.
         </p>
       </section>
 
-      <div className="mt-14 flex flex-col gap-3 sm:flex-row">
+      <div className="mt-14 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link
           href="/contact"
           className="focus-ring inline-flex justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-background hover:bg-accent-soft"
@@ -106,7 +91,7 @@ export default function GarageMahalPage() {
         </Link>
         <Link
           href="/services"
-          className="focus-ring inline-flex justify-center rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground hover:border-accent/40"
+          className="focus-ring inline-flex justify-center px-2 py-3 text-sm font-medium text-muted underline-offset-4 hover:text-foreground hover:underline"
         >
           See services
         </Link>

@@ -2,11 +2,13 @@
 
 Marketing site for **Refresh Studio** — an agency building custom websites for small businesses. Founded by **Naga Bhargav Paritala**.
 
-**Brand:** Refresh Studio  
+**Brand:** Refresh Studio (dark charcoal + metallic silver — top-left logo panel)  
 **Contact:** naga.paritala@gmail.com  
 **Featured case study:** Garage Mahal (Next.js dealer site — demo on request)
 
 > Repo name remains `paritala-studio` for now; product brand is Refresh Studio.
+
+See `PRODUCT.md` and `DESIGN.md` for brand and design system.
 
 ## Stack
 

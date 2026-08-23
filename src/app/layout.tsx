@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
+import { Bricolage_Grotesque, Source_Sans_3 } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const sans = DM_Sans({
+const sans = Source_Sans_3({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
-const display = Fraunces({
+const display = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.tagline,
-  metadataBase: new URL("https://github.com/nagaparitala/paritala-studio"),
+  metadataBase: new URL(site.url),
   openGraph: {
     title: site.name,
     description: site.tagline,

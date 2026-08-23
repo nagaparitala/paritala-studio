@@ -1,6 +1,7 @@
 export const site = {
   name: "Refresh Studio",
-  tagline: "An agency building custom websites for small businesses that want to look bigger.",
+  tagline:
+    "Custom websites for small businesses that need inventory, payments, and leads — not another theme.",
   owner: "Naga Bhargav Paritala",
   email: "naga.paritala@gmail.com",
   url: "https://paritala.studio",
@@ -14,13 +15,13 @@ export const packages = [
     priceNote: "one-time",
     amount: 250,
     description:
-      "Custom site design and UI for your business — polished, mobile-first, and ready to build or hand off.",
+      "Custom site design and UI for your business — mobile-first, polished, ready to build or hand off.",
     features: [
       "Custom design (not a theme)",
       "Responsive & accessible UI",
       "Clear page layouts & visual system",
       "Revision round included",
-      "Handoff-ready assets / Next.js-ready structure",
+      "Handoff-ready / Next.js-ready structure",
     ],
     popular: true,
   },
@@ -31,7 +32,7 @@ export const packages = [
     priceNote: "/month",
     amount: 150,
     description:
-      "Stay covered after launch — updates, fixes, and light improvements so your site keeps working.",
+      "Updates, fixes, and light improvements after launch so the site keeps working.",
     features: [
       "Hosting & uptime check-ins",
       "Content & copy tweaks",
@@ -46,36 +47,36 @@ export const packages = [
 export const services = [
   {
     title: "Custom website design",
-    body: "Brand-forward UI that feels intentional — not a template with your logo slapped on.",
+    body: "Layouts and UI built for your brand and conversion goals — not a template with a logo swap.",
   },
   {
     title: "Next.js development",
-    body: "Fast, SEO-friendly App Router builds with TypeScript, Tailwind, and clean component structure.",
+    body: "App Router, TypeScript, Tailwind. Fast pages, clean components, SEO-friendly structure.",
   },
   {
-    title: "Integrations & workflows",
-    body: "Inventory sync, payments, forms, financing flows — wired so your team can actually use them.",
+    title: "Integrations that stick",
+    body: "Inventory sync, Stripe, forms, financing or trade-in flows — wired so your team can use them.",
   },
   {
-    title: "Launch & iterate",
-    body: "Deploy, measure, and refine. Small businesses get a partner, not a one-and-done handoff.",
+    title: "Launch & maintenance",
+    body: "Ship to production, walk you through updates, stay on for fixes and small improvements.",
   },
 ] as const;
 
 export const howItWorks = [
   {
     step: "01",
-    title: "Discovery call",
-    body: "We clarify goals, audience, must-have pages, and any integrations (inventory, payments, CRM).",
+    title: "Discovery",
+    body: "Goals, must-have pages, and integrations (inventory, payments, CRM) in one call.",
   },
   {
     step: "02",
     title: "Design & build",
-    body: "You get a clear scope, then a custom Next.js site — design and engineering together, not siloed.",
+    body: "Scoped custom Next.js site — design and engineering together, not siloed.",
   },
   {
     step: "03",
     title: "Launch & support",
-    body: "We ship to production, train you on updates, and stay available for iterations.",
+    body: "Deploy, hand off what you need, and stay available for maintenance.",
   },
 ] as const;

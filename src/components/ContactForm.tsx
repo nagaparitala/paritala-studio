@@ -42,12 +42,11 @@ export function ContactForm() {
     }
   }
 
+  const fieldClass =
+    "focus-ring mt-1.5 w-full rounded-md border border-border bg-surface px-3 py-2.5 text-foreground placeholder:text-muted/70";
+
   return (
-    <form
-      onSubmit={onSubmit}
-      className="space-y-5 rounded-2xl border border-border bg-surface p-6 sm:p-8"
-      noValidate
-    >
+    <form onSubmit={onSubmit} className="space-y-5" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block text-sm">
           <span className="text-muted">Name</span>
@@ -55,7 +54,7 @@ export function ContactForm() {
             name="name"
             required
             autoComplete="name"
-            className="focus-ring mt-1.5 w-full rounded-lg border border-border bg-surface-elevated px-3 py-2.5 text-foreground placeholder:text-muted/60"
+            className={fieldClass}
             placeholder="Your name"
           />
         </label>
@@ -66,7 +65,7 @@ export function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            className="focus-ring mt-1.5 w-full rounded-lg border border-border bg-surface-elevated px-3 py-2.5 text-foreground placeholder:text-muted/60"
+            className={fieldClass}
             placeholder="you@business.com"
           />
         </label>
@@ -77,17 +76,13 @@ export function ContactForm() {
           <input
             name="business"
             autoComplete="organization"
-            className="focus-ring mt-1.5 w-full rounded-lg border border-border bg-surface-elevated px-3 py-2.5 text-foreground placeholder:text-muted/60"
+            className={fieldClass}
             placeholder="Company name"
           />
         </label>
         <label className="block text-sm">
           <span className="text-muted">Approx. budget</span>
-          <select
-            name="budget"
-            className="focus-ring mt-1.5 w-full rounded-lg border border-border bg-surface-elevated px-3 py-2.5 text-foreground"
-            defaultValue=""
-          >
+          <select name="budget" className={fieldClass} defaultValue="">
             <option value="" disabled>
               Select a range
             </option>
@@ -104,8 +99,8 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
-          className="focus-ring mt-1.5 w-full resize-y rounded-lg border border-border bg-surface-elevated px-3 py-2.5 text-foreground placeholder:text-muted/60"
-          placeholder="What are you building? Timeline? Any must-have integrations?"
+          className={`${fieldClass} resize-y`}
+          placeholder="What are you building? Timeline? Must-have integrations?"
         />
       </label>
 

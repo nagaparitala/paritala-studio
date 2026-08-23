@@ -10,23 +10,16 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-      <div className="grid gap-12 lg:grid-cols-5">
+      <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
         <div className="lg:col-span-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-            Contact
-          </p>
           <h1 className="display mt-3 text-4xl text-foreground sm:text-5xl">
-            Let’s talk about your site
+            Tell us what you’re building
           </h1>
           <p className="mt-4 text-muted leading-relaxed">
-            Share a bit about your business and goals. We usually reply within one
-            business day. Ask for {site.owner.split(" ")[0]} —{" "}
-            {site.email}.
+            Share your business and goals. We usually reply within one business
+            day. Ask for {site.owner.split(" ")[0]}.
           </p>
-          <div className="mt-8 rounded-2xl border border-border bg-surface p-6">
-            <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-              Email directly
-            </p>
+          <div className="mt-8 border-t border-border pt-6">
             <a
               href={`mailto:${site.email}`}
               className="focus-ring mt-2 inline-block text-lg text-accent-soft hover:text-accent"
@@ -38,7 +31,7 @@ export default function ContactPage() {
               <a href="/services#pricing" className="text-accent-soft hover:underline">
                 See pricing
               </a>{" "}
-              — $250 one-time design/UI or $150/month maintenance via Stripe.
+              — $250 one-time design/UI or $150/month maintenance.
             </p>
           </div>
         </div>
