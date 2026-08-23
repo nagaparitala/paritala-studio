@@ -1,5 +1,5 @@
 export const site = {
-  name: "Refresh Studios",
+  name: "Refresh Studio",
   tagline: "An agency building custom websites for small businesses that want to look bigger.",
   owner: "Naga Bhargav Paritala",
   email: "naga.paritala@gmail.com",

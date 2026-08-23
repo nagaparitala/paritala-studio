@@ -58,7 +58,7 @@ export default function ServicesPage() {
               key={pkg.id}
               className={`flex flex-col rounded-3xl border p-6 sm:p-8 ${
                 pkg.popular
-                  ? "border-accent/50 bg-surface-elevated shadow-[0_0_0_1px_rgba(196,165,116,0.2)]"
+                  ? "border-foreground/40 bg-surface-elevated shadow-[0_0_0_1px_rgba(10,10,10,0.12)]"
                   : "border-border bg-surface"
               }`}
             >

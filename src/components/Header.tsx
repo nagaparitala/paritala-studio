@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -16,14 +17,22 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link
           href="/"
-          className="focus-ring display text-lg tracking-tight text-foreground"
+          className="focus-ring flex items-center"
           onClick={() => setOpen(false)}
         >
-          {site.name}
+          <Image
+            src="/logo.png"
+            alt="Refresh Studio"
+            width={604}
+            height={248}
+            className="h-9 w-auto sm:h-10"
+            priority
+          />
+          <span className="sr-only">{site.name}</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
@@ -36,7 +45,7 @@ export function Header() {
                 href={link.href}
                 className={`focus-ring text-sm transition-colors ${
                   active
-                    ? "text-accent-soft"
+                    ? "font-medium text-foreground"
                     : "text-muted hover:text-foreground"
                 }`}
               >

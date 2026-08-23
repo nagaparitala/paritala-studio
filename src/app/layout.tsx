@@ -28,6 +28,11 @@ export const metadata: Metadata = {
     title: site.name,
     description: site.tagline,
     type: "website",
+    images: [{ url: "/logo.png", alt: "Refresh Studio" }],
+  },
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.png" }],
   },
 };
 

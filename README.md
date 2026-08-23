@@ -1,12 +1,12 @@
-# Refresh Studios
+# Refresh Studio
 
-Marketing site for **Refresh Studios** — an agency building custom websites for small businesses. Founded by **Naga Bhargav Paritala**.
+Marketing site for **Refresh Studio** — an agency building custom websites for small businesses. Founded by **Naga Bhargav Paritala**.
 
-**Brand:** Refresh Studios  
+**Brand:** Refresh Studio  
 **Contact:** naga.paritala@gmail.com  
 **Featured case study:** Garage Mahal (Next.js dealer site — demo on request)
 
-> Repo name remains `paritala-studio` for now; product brand is Refresh Studios.
+> Repo name remains `paritala-studio` for now; product brand is Refresh Studio.
 
 ## Stack
 

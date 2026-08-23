@@ -8,11 +8,11 @@ export default function HomePage() {
       <section className="relative overflow-hidden border-b border-border">
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-accent/10 blur-3xl"
+          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-foreground/5 blur-3xl"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-32 left-1/4 h-72 w-72 rounded-full bg-accent-deep/20 blur-3xl"
+          className="pointer-events-none absolute -bottom-32 left-1/4 h-72 w-72 rounded-full bg-foreground/8 blur-3xl"
         />
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:py-32">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">

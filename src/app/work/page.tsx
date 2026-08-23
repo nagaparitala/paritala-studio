@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Selected projects from Refresh Studios, including Garage Mahal.",
+  description: "Selected projects from Refresh Studio, including Garage Mahal.",
 };
 
 export default function WorkPage() {

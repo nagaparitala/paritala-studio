@@ -153,7 +153,7 @@ export async function POST(request: Request) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: process.env.RESEND_FROM || "Refresh Studios <onboarding@resend.dev>",
+          from: process.env.RESEND_FROM || "Refresh Studio <onboarding@resend.dev>",
           to: [notifyTo],
           reply_to: email,
           subject: `New inquiry from ${name}`,
