@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
 
@@ -27,11 +28,12 @@ export default function ContactPage() {
               {site.email}
             </a>
             <p className="mt-4 text-sm text-muted">
-              Prefer to start with payment?{" "}
-              <a href="/services#pricing" className="text-accent-soft hover:underline">
-                See pricing
-              </a>{" "}
-              — $250 one-time design/UI or $150/month maintenance.
+              Looking at pricing?{" "}
+              <Link href="/services#pricing" className="text-accent-soft hover:underline">
+                See packages
+              </Link>{" "}
+              — $250 one-time design/UI or $150/month maintenance. Stripe
+              checkout coming soon; email us or use the form to get started.
             </p>
           </div>
         </div>

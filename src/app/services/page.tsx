@@ -6,7 +6,7 @@ import { packages, services, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Simple pricing — $250 one-time for site design/UI, or $150/month for ongoing maintenance. Stripe checkout available.",
+    "Simple pricing — $250 one-time for site design/UI, or $150/month for ongoing maintenance. Email us to get started.",
 };
 
 export default function ServicesPage() {
@@ -41,8 +41,8 @@ export default function ServicesPage() {
           Pricing
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-muted">
-          Two options. Pay via Stripe Checkout when you’re ready. Refundable if
-          we don’t kick off within 14 days.
+          Two options. Email us to get started — Stripe checkout coming soon.
+          Deposits are refundable if we don’t kick off within 14 days.
         </p>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-2">
@@ -67,8 +67,8 @@ export default function ServicesPage() {
               </p>
               <p className="mt-1 text-sm text-muted">
                 {pkg.id === "maintenance"
-                  ? "First month via Stripe to start"
-                  : "Pay once via Stripe to start"}
+                  ? "Email us to start the first month"
+                  : "Email us to get started"}
               </p>
               <p className="mt-4 text-sm leading-relaxed text-muted">
                 {pkg.description}
@@ -81,15 +81,15 @@ export default function ServicesPage() {
               <div className="mt-8">
                 <PayDepositButton
                   packageId={pkg.id}
-                  label={
-                    pkg.id === "maintenance"
-                      ? `Pay $${pkg.amount.toLocaleString()} (first month)`
-                      : `Pay $${pkg.amount.toLocaleString()}`
-                  }
-                  className={
+                  primaryClassName={
                     pkg.popular
                       ? "bg-accent text-background hover:bg-accent-soft"
                       : "border border-border text-foreground hover:border-accent"
+                  }
+                  secondaryClassName={
+                    pkg.popular
+                      ? "border border-border text-foreground hover:border-accent"
+                      : "border border-border text-muted hover:border-accent hover:text-foreground"
                   }
                 />
               </div>
