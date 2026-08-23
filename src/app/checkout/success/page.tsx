@@ -3,7 +3,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Deposit received",
+  title: "Payment received",
 };
 
 export default function CheckoutSuccessPage() {
@@ -13,7 +13,7 @@ export default function CheckoutSuccessPage() {
         Stripe Checkout
       </p>
       <h1 className="display mt-3 text-3xl text-foreground sm:text-4xl">
-        Deposit received — thank you
+        Payment received — thank you
       </h1>
       <p className="mt-4 text-muted leading-relaxed">
         I’ll confirm your project kickoff by email shortly. Questions? Reach me at{" "}

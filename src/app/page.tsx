@@ -59,7 +59,7 @@ export default function HomePage() {
               href="/services"
               className="focus-ring text-sm font-medium text-accent hover:text-accent-soft"
             >
-              View packages →
+              View pricing →
             </Link>
           </div>
           <ul className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -179,8 +179,9 @@ export default function HomePage() {
               Ready for a site that feels custom?
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-muted">
-              Tell us about your business. Or reserve a package with a Stripe
-              deposit — refundable if we don’t kick off within 14 days of payment.
+              Tell us about your business. Or start with clear pricing —
+              $250 one-time for design/UI, or $150/month for ongoing maintenance.
+              Payments are refundable if we don’t kick off within 14 days.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
@@ -193,7 +194,7 @@ export default function HomePage() {
                 href="/services#pricing"
                 className="focus-ring inline-flex rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground hover:border-accent/40"
               >
-                See pricing & deposits
+                See pricing
               </Link>
             </div>
             <a

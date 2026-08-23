@@ -34,11 +34,11 @@ export default function ContactPage() {
               {site.email}
             </a>
             <p className="mt-4 text-sm text-muted">
-              Prefer to reserve a slot first?{" "}
+              Prefer to start with payment?{" "}
               <a href="/services#pricing" className="text-accent-soft hover:underline">
-                Pay a package deposit
+                See pricing
               </a>{" "}
-              via Stripe.
+              — $250 one-time design/UI or $150/month maintenance via Stripe.
             </p>
           </div>
         </div>

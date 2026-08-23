@@ -8,9 +8,8 @@ export function getStripe() {
   return new Stripe(key);
 }
 
-/** Deposit amounts in cents by package id */
+/** Checkout amounts in cents by package id (server allowlist) */
 export const depositCents: Record<string, number> = {
-  starter: 50_000,
-  growth: 100_000,
-  custom: 150_000,
+  design: 25_000,
+  maintenance: 15_000,
 };

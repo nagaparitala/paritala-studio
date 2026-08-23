@@ -15,7 +15,7 @@ export default function CheckoutCancelPage() {
         Checkout canceled
       </h1>
       <p className="mt-4 text-muted leading-relaxed">
-        No charge was made. You can pick a package again anytime, or reach out if
+        No charge was made. You can choose a pricing option again anytime, or reach out if
         you’d rather start with a conversation.
       </p>
       <div className="mt-10 flex flex-col gap-3 sm:flex-row">

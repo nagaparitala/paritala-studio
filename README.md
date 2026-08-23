@@ -11,7 +11,7 @@ Marketing site for **Refresh Studios** — an agency building custom websites fo
 ## Stack
 
 - Next.js (App Router) + TypeScript + Tailwind CSS
-- Stripe Checkout for package deposits
+- Stripe Checkout for design & maintenance payments
 - Contact API with local JSONL store + optional Resend email
 
 ## Routes
@@ -21,7 +21,7 @@ Marketing site for **Refresh Studios** — an agency building custom websites fo
 | `/` | Home — hero, services, Garage Mahal teaser, how-it-works, CTA |
 | `/work` | Work index |
 | `/work/garage-mahal` | Garage Mahal case study |
-| `/services` | Packages + Stripe deposit buttons |
+| `/services` | Pricing + Stripe payment buttons |
 | `/contact` | Contact form + visible email |
 | `/checkout/success` | Stripe success |
 | `/checkout/cancel` | Stripe cancel |
@@ -46,8 +46,8 @@ Open http://localhost:3000
 
 | Variable | Required | Purpose |
 |----------|----------|---------|
-| `STRIPE_SECRET_KEY` | For deposits | Server Stripe secret |
-| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | For deposits | Publishable key |
+| `STRIPE_SECRET_KEY` | For payments | Server Stripe secret |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | For payments | Publishable key |
 | `NEXT_PUBLIC_SITE_URL` | Recommended in prod | Canonical origin for success/cancel URLs |
 | `RESEND_API_KEY` | Optional | Email contact submissions |
 | `RESEND_FROM` | Optional | Verified Resend from address |
@@ -62,9 +62,9 @@ Never commit `.env`, `.env.local`, or real secrets. `.env.example` is the templa
 3. Appends a line to `.data/contact-submissions.jsonl` when the filesystem allows.
 4. If `RESEND_API_KEY` is set, sends an email via Resend.
 
-### Stripe deposits
+### Stripe payments
 
-`POST /api/create-checkout-session` with `{ "packageId": "starter" | "growth" | "custom" }` creates a Checkout Session for the package deposit ($500 / $1,000 / $1,500). Without `STRIPE_SECRET_KEY`, the API returns 503 with a clear error.
+`POST /api/create-checkout-session` with `{ "packageId": "design" | "maintenance" }` creates a Checkout Session for the allowlisted amount ($250 one-time design/UI, or $150 for the first month of maintenance). Without `STRIPE_SECRET_KEY`, the API returns 503 with a clear error.
 
 ## Build and deploy
 

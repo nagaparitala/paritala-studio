@@ -81,8 +81,14 @@ export async function POST(request: Request) {
             currency: "usd",
             unit_amount: amount,
             product_data: {
-              name: `${pkg.name} — project deposit`,
-              description: `Deposit toward ${pkg.name} (${pkg.price}). Balance invoiced separately.`,
+              name:
+                pkg.id === "maintenance"
+                  ? `${pkg.name} — first month`
+                  : `${pkg.name} — ${pkg.price} ${pkg.priceNote}`,
+              description:
+                pkg.id === "maintenance"
+                  ? `First month of ongoing maintenance (${pkg.price}${pkg.priceNote}).`
+                  : `One-time payment for site design/UI (${pkg.price}).`,
             },
           },
         },

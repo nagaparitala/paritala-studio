@@ -6,7 +6,7 @@ import { packages, services, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Website packages for small businesses — Starter, Growth, and Custom builds with Stripe deposit checkout.",
+    "Simple pricing — $250 one-time for site design/UI, or $150/month for ongoing maintenance. Stripe checkout available.",
 };
 
 export default function ServicesPage() {
@@ -19,7 +19,7 @@ export default function ServicesPage() {
         Built for small businesses
       </h1>
       <p className="mt-4 max-w-2xl text-muted">
-        Clear packages, custom design, modern stack. Prefer a conversation first?
+        Clear pricing, custom design, modern stack. Prefer a conversation first?
         Email{" "}
         <a className="text-accent-soft hover:underline" href={`mailto:${site.email}`}>
           {site.email}
@@ -45,15 +45,14 @@ export default function ServicesPage() {
 
       <section id="pricing" className="scroll-mt-24 mt-20">
         <h2 className="display text-3xl text-foreground sm:text-4xl">
-          Packages & deposits
+          Pricing
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-muted">
-          Pay a project deposit via Stripe Checkout to reserve a slot. Remaining
-          balance is invoiced per the proposal. Deposits are refundable if we
-          don’t kick off within 14 days of payment.
+          Two options. Pay via Stripe Checkout when you’re ready to start.
+          Payments are refundable if we don’t kick off within 14 days.
         </p>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
           {packages.map((pkg) => (
             <div
               key={pkg.id}
@@ -69,9 +68,16 @@ export default function ServicesPage() {
                 </span>
               )}
               <h3 className="text-xl font-medium text-foreground">{pkg.name}</h3>
-              <p className="display mt-2 text-3xl text-accent-soft">{pkg.price}</p>
+              <p className="display mt-2 text-3xl text-accent-soft">
+                {pkg.price}
+                <span className="ml-2 text-lg font-normal text-muted">
+                  {pkg.priceNote}
+                </span>
+              </p>
               <p className="mt-1 text-sm text-muted">
-                Deposit ${pkg.deposit.toLocaleString()} to start
+                {pkg.id === "maintenance"
+                  ? "First month via Stripe to start"
+                  : "Pay once via Stripe to start"}
               </p>
               <p className="mt-4 text-sm leading-relaxed text-muted">
                 {pkg.description}
@@ -89,7 +95,11 @@ export default function ServicesPage() {
               <div className="mt-8">
                 <PayDepositButton
                   packageId={pkg.id}
-                  label={`Pay $${pkg.deposit.toLocaleString()} deposit`}
+                  label={
+                    pkg.id === "maintenance"
+                      ? `Pay $${pkg.amount.toLocaleString()} (first month)`
+                      : `Pay $${pkg.amount.toLocaleString()}`
+                  }
                   className={
                     pkg.popular
                       ? "bg-accent text-background hover:bg-accent-soft"
