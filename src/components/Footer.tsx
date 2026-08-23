@@ -48,7 +48,7 @@ export function Footer() {
             {site.email}
           </a>
           <p className="mt-4 text-xs text-muted">
-            © {new Date().getFullYear()} {site.owner}. All rights reserved.
+            © {new Date().getFullYear()} {site.name}. {site.owner}. All rights reserved.
           </p>
         </div>
       </div>

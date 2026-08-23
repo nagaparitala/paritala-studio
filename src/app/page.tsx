@@ -22,9 +22,9 @@ export default function HomePage() {
             Websites that make small businesses look unmistakably premium.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            I’m {site.owner} — I design and build custom Next.js sites for
-            owners who want clarity, speed, and real integrations — not another
-            cookie-cutter theme.
+            We’re a small-business web agency led by {site.owner}. We design
+            and build custom Next.js sites for owners who want clarity, speed,
+            and real integrations — not another cookie-cutter theme.
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
@@ -49,10 +49,10 @@ export default function HomePage() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 className="display text-3xl text-foreground sm:text-4xl">
-                What I do
+                What we do
               </h2>
               <p className="mt-2 max-w-lg text-muted">
-                End-to-end product for local businesses ready to grow online.
+                End-to-end websites for local businesses ready to grow online.
               </p>
             </div>
             <Link
@@ -179,7 +179,7 @@ export default function HomePage() {
               Ready for a site that feels custom?
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-muted">
-              Tell me about your business. Or reserve a package with a Stripe
+              Tell us about your business. Or reserve a package with a Stripe
               deposit — refundable if we don’t kick off within 14 days of payment.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

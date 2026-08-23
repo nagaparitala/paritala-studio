@@ -34,7 +34,7 @@ export function ContactForm() {
         throw new Error(json.error || "Something went wrong");
       }
       setStatus("success");
-      setMessage("Thanks — I’ll reply within one business day.");
+      setMessage("Thanks — we’ll reply within one business day.");
       form.reset();
     } catch (err) {
       setStatus("error");

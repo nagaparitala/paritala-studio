@@ -19,8 +19,9 @@ export default function ContactPage() {
             Let’s talk about your site
           </h1>
           <p className="mt-4 text-muted leading-relaxed">
-            Share a bit about your business and goals. I usually reply within one
-            business day.
+            Share a bit about your business and goals. We usually reply within one
+            business day. Ask for {site.owner.split(" ")[0]} —{" "}
+            {site.email}.
           </p>
           <div className="mt-8 rounded-2xl border border-border bg-surface p-6">
             <p className="text-xs font-semibold uppercase tracking-wider text-muted">
