@@ -12,7 +12,6 @@ colors:
   accent-soft: "#dfe2e5"
   accent-deep: "#8b9198"
   success: "#6f9f7e"
-  accent-hairline: "#c4a574"
   danger: "#d08072"
 typography:
   display:
