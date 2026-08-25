@@ -7,6 +7,8 @@ type Body = { packageId?: string };
 function allowlistedBases(): string[] {
   const bases = [
     process.env.NEXT_PUBLIC_SITE_URL,
+    "https://getrefreshstudios.com",
+    "https://www.getrefreshstudios.com",
     "https://refresh-studios.vercel.app",
     "https://refresh-studios-nparitala-projects.vercel.app",
   ];
