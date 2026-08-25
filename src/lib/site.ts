@@ -4,7 +4,7 @@ export const site = {
     "Custom websites for small businesses that need inventory, payments, and leads — not another theme.",
   owner: "Naga Bhargav Paritala",
   email: "naga.paritala@gmail.com",
-  url: "https://paritala.studio",
+  url: "https://getrefreshstudios.com",
 } as const;
 
 export const packages = [
