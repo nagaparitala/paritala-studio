@@ -1,7 +1,7 @@
 export const site = {
   name: "Refresh Studio",
   tagline:
-    "Custom websites for small businesses that need inventory, payments, and leads — not another theme.",
+    "Custom websites for small businesses — live inventory, payments, and lead capture that actually works.",
   owner: "Naga Bhargav Paritala",
   email: "naga.paritala@gmail.com",
   url: "https://getrefreshstudios.com",
@@ -50,8 +50,8 @@ export const services = [
     body: "Layouts and UI built for your brand and conversion goals — not a template with a logo swap.",
   },
   {
-    title: "Next.js development",
-    body: "App Router, TypeScript, Tailwind. Fast pages, clean components, SEO-friendly structure.",
+    title: "Production-ready builds",
+    body: "Fast, maintainable sites with clean code and SEO-friendly structure.",
   },
   {
     title: "Integrations that stick",

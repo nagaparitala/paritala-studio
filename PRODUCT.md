@@ -29,7 +29,7 @@ Marketing site at this repo. Prospects browse Work → Services/Pricing → Cont
 - Public pricing: **$250 one-time** site design/UI; **$150/month** maintenance.
 - Payments via Stripe Checkout when configured; refundable if kickoff does not happen within 14 days.
 - Contact API: field length limits, IP rate limit, redacted logs; optional Resend notify.
-- Do not invent testimonials, live client URLs, or case studies beyond Garage Mahal (demo on request).
+- Do not invent testimonials, live client URLs, or case studies beyond Garage Mahal Motors (live at https://garagemahalmotors.com).
 - Brand name in UI: **Refresh Studio** (singular).
 
 ## Brand Commitments
@@ -40,7 +40,7 @@ Marketing site at this repo. Prospects browse Work → Services/Pricing → Cont
 
 ## Evidence on Hand
 
-- Case study: Garage Mahal — DealerCenter inventory sync, financing & trade-in flows, VDP dealer price breakdown. Demo on request; no public live URL on this site.
+- Case study: Garage Mahal Motors — live inventory sync, financing & trade-in flows, transparent dealer price breakdown. Live at https://garagemahalmotors.com.
 - Logo sheet (agent attachment) — top-left panel is authoritative for theme.
 
 ## Product Principles

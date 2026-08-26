@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { howItWorks, packages, site } from "@/lib/site";
 
@@ -5,28 +6,60 @@ export default function HomePage() {
   return (
     <>
       <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:py-32">
-          <h1 className="display max-w-3xl text-4xl text-foreground sm:text-5xl lg:text-6xl">
-            Websites small businesses can run — inventory, payments, leads.
-          </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            {site.name} is led by {site.owner}. We design and build custom
-            Next.js sites for owners who want clarity and real integrations —
-            not another cookie-cutter theme.
-          </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link
-              href="/contact"
-              className="focus-ring inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-background transition hover:bg-accent-soft"
-            >
-              Book a discovery call
-            </Link>
-            <Link
-              href="/work/garage-mahal"
-              className="focus-ring inline-flex items-center justify-center px-2 py-3 text-sm font-medium text-muted underline-offset-4 transition hover:text-foreground hover:underline"
-            >
-              Garage Mahal case study
-            </Link>
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+            <div className="flex flex-col justify-center">
+              <p className="text-xs font-semibold uppercase tracking-wider text-accent-deep">
+                Recent work
+              </p>
+              <h1 className="display mt-3 text-4xl text-foreground sm:text-5xl lg:text-6xl">
+                Garage Mahal Motors
+              </h1>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+                A custom dealer site that syncs live inventory, captures
+                financing and trade-in leads, and shows transparent pricing —
+                so shoppers can browse like owners.
+              </p>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  href="https://garagemahalmotors.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="focus-ring inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-background transition hover:bg-accent-soft"
+                >
+                  Visit the live site →
+                </a>
+                <Link
+                  href="/work/garage-mahal"
+                  className="focus-ring inline-flex items-center justify-center px-2 py-3 text-sm font-medium text-muted underline-offset-4 transition hover:text-foreground hover:underline"
+                >
+                  Read the case study
+                </Link>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="overflow-hidden rounded-md border border-border bg-surface">
+                <Image
+                  src="/work/garage-mahal/hero.png"
+                  alt="Garage Mahal Motors homepage"
+                  width={1400}
+                  height={900}
+                  className="w-full"
+                  priority
+                />
+              </div>
+              <p className="mt-3 text-xs text-muted">
+                Live at{" "}
+                <a
+                  href="https://garagemahalmotors.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-soft hover:underline"
+                >
+                  garagemahalmotors.com
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -36,11 +69,10 @@ export default function HomePage() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 className="display text-3xl text-foreground sm:text-4xl">
-                What we ship
+                What you get
               </h2>
               <p className="mt-2 max-w-lg text-muted">
-                Design, build, and wire the workflows your business actually
-                needs.
+                Real sites that work for your customers and your business.
               </p>
             </div>
             <Link
@@ -54,19 +86,19 @@ export default function HomePage() {
             {[
               {
                 title: "Custom design",
-                body: "Brand-forward UI sized for your pages and offers — not a theme skin.",
+                body: "Layouts and UI built for your brand and what you sell — not a template.",
               },
               {
-                title: "Next.js builds",
-                body: "TypeScript App Router sites that stay fast and maintainable.",
+                title: "Live inventory",
+                body: "Connect your catalog so listings stay current without manual updates.",
               },
               {
-                title: "Integrations",
-                body: "DealerCenter, Stripe, forms, financing — connected end to end.",
+                title: "Payment & lead flows",
+                body: "Stripe checkout, financing forms, trade-in capture — wired and ready.",
               },
               {
-                title: "Ongoing care",
-                body: "$150/mo maintenance when you want updates without hunting freelancers.",
+                title: "Ongoing maintenance",
+                body: "$150/mo when you want updates, fixes, and improvements without the hunt.",
               },
             ].map((item) => (
               <li key={item.title} className="border-t border-border pt-5">
@@ -84,29 +116,51 @@ export default function HomePage() {
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-          <div className="max-w-3xl">
-            <h2 className="display text-3xl text-foreground sm:text-4xl">
-              Garage Mahal
-            </h2>
-            <p className="mt-4 text-muted leading-relaxed">
-              Next.js dealer site with DealerCenter inventory sync, financing
-              and trade-in lead flows, and vehicle pages with a transparent
-              dealer price breakdown.
-            </p>
-            <ul className="mt-6 space-y-2 text-sm text-muted">
-              <li>Live inventory from DealerCenter</li>
-              <li>Financing & trade-in lead flows</li>
-              <li>Dealer price breakdown on the VDP</li>
-            </ul>
-            <p className="mt-4 text-sm text-muted">
-              Demo on request — no public live URL published here.
-            </p>
-            <Link
-              href="/work/garage-mahal"
-              className="focus-ring mt-8 inline-flex rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground transition hover:border-accent hover:text-accent-soft"
-            >
-              Read the case study
-            </Link>
+          <div className="grid gap-10 lg:grid-cols-5 lg:gap-12">
+            <div className="lg:col-span-3">
+              <h2 className="display text-3xl text-foreground sm:text-4xl">
+                More from Garage Mahal
+              </h2>
+              <p className="mt-4 text-muted leading-relaxed">
+                Shoppers browse live inventory, apply for financing, submit
+                trade-in details, and see transparent dealer pricing — all
+                without leaving the site or calling for the basics.
+              </p>
+              <ul className="mt-6 space-y-2 text-sm text-muted">
+                <li>✓ Live inventory from dealer feed</li>
+                <li>✓ Financing application with credit tiers</li>
+                <li>✓ Trade-in value capture</li>
+                <li>✓ Clear price breakdown on every vehicle</li>
+              </ul>
+              <Link
+                href="/work/garage-mahal"
+                className="focus-ring mt-8 inline-flex rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground transition hover:border-accent hover:text-accent-soft"
+              >
+                Read the full case study
+              </Link>
+            </div>
+            <div className="lg:col-span-2">
+              <div className="space-y-4">
+                <div className="overflow-hidden rounded-md border border-border bg-surface">
+                  <Image
+                    src="/work/garage-mahal/inventory.png"
+                    alt="Garage Mahal inventory page"
+                    width={700}
+                    height={450}
+                    className="w-full"
+                  />
+                </div>
+                <div className="overflow-hidden rounded-md border border-border bg-surface">
+                  <Image
+                    src="/work/garage-mahal/vehicle-detail.png"
+                    alt="Garage Mahal vehicle detail page"
+                    width={700}
+                    height={450}
+                    className="w-full"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
