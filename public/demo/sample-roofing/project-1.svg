@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#92400e"/>
+  <text x="300" y="190" font-family="system-ui, sans-serif" font-size="32" font-weight="600" fill="white" text-anchor="middle">Project Sample 1</text>
+  <text x="300" y="230" font-family="system-ui, sans-serif" font-size="18" fill="white" text-anchor="middle" opacity="0.8">Placeholder Image</text>
+</svg>
