@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getDemo, getAllDemoSlugs } from "@/lib/demos";
+import { getDemo, getAllDemoSlugs, formatReviewerName } from "@/lib/demos";
 
 export const dynamicParams = false;
 
@@ -197,7 +197,7 @@ export default async function DemoPage({ params }: Props) {
               >
                 <div className="flex items-center justify-between">
                   <span className="font-medium text-gray-900">
-                    {review.reviewerName}
+                    {formatReviewerName(review.reviewerName)}
                   </span>
                   {renderStars(review.stars)}
                 </div>

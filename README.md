@@ -100,11 +100,13 @@ Demo homepages are designed for build-first outreach: real, functional homepage 
      rating: 4.8,
      reviewCount: 42,
      reviews: [
-       { reviewerName: "Customer Name", stars: 5, quote: "Review text" },
+       // Store full names; template auto-formats to "FirstName L." on page
+       { reviewerName: "John Smith", stars: 5, quote: "Review text" },
      ],
      photos: [
-       { path: "/demo/your-slug/hero.jpg", alt: "Alt text" },
-       { path: "/demo/your-slug/photo1.jpg", alt: "Alt text" },
+       // Only owner-uploaded listing photos (no customer review photos)
+       { path: "/demo/your-slug/hero.jpg", alt: "Alt text", source: "owner" },
+       { path: "/demo/your-slug/photo1.jpg", alt: "Alt text", source: "owner" },
      ],
      hours: "Monday-Friday: 8am-6pm",
      accentColor: "#d97706", // optional
@@ -134,6 +136,9 @@ All demo pages include these protections (baked into the template, not per-demo)
 - No contact forms, phone numbers, tel:/sms:/mailto: links to the shop, or booking widgets
 - The only CTA points to `naga@getrefreshstudios.com` or `/contact`
 - Photos served locally from `public/demo/<slug>/`, never hotlinked
+- **Privacy protections**:
+  - Reviewer names automatically formatted to first name + last initial only (e.g. "John Smith" → "John S.")
+  - Only owner-uploaded listing photos allowed (`source: "owner"` enforced in type)
 
 ## License
 

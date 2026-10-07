@@ -20,10 +20,38 @@ export type DemoData = {
   photos: Array<{
     path: string;
     alt: string;
+    // Only owner-uploaded listing photos may be used (no customer review photos)
+    source: "owner";
   }>;
   hours?: string;
   accentColor?: string;
 };
+
+/**
+ * Format reviewer name to first name + last initial for privacy.
+ * Examples:
+ * - "John Smith" -> "John S."
+ * - "michelle rodriguez" -> "Michelle R."
+ * - "Wesley" -> "Wesley"
+ * - "Mary Jane Watson" -> "Mary W." (uses first + last initial)
+ */
+export function formatReviewerName(fullName: string): string {
+  const trimmed = fullName.trim();
+  if (!trimmed) return "";
+
+  const parts = trimmed.split(/\s+/);
+
+  // Single word name: capitalize and return as-is
+  if (parts.length === 1) {
+    return parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase();
+  }
+
+  // Multiple words: capitalize first name + last initial with period
+  const firstName = parts[0].charAt(0).toUpperCase() + parts[0].slice(1).toLowerCase();
+  const lastInitial = parts[parts.length - 1].charAt(0).toUpperCase();
+
+  return `${firstName} ${lastInitial}.`;
+}
 
 const sampleRoofing: DemoData = {
   slug: "sample-roofing",
@@ -82,18 +110,22 @@ const sampleRoofing: DemoData = {
     {
       path: "/demo/sample-roofing/hero.svg",
       alt: "Sample roofing project - demonstration image",
+      source: "owner" as const,
     },
     {
       path: "/demo/sample-roofing/project-1.svg",
       alt: "Sample project photo 1 - placeholder",
+      source: "owner" as const,
     },
     {
       path: "/demo/sample-roofing/project-2.svg",
       alt: "Sample project photo 2 - placeholder",
+      source: "owner" as const,
     },
     {
       path: "/demo/sample-roofing/project-3.svg",
       alt: "Sample project photo 3 - placeholder",
+      source: "owner" as const,
     },
   ],
   hours: "Monday-Friday: 8am-6pm, Saturday: 9am-4pm, Sunday: Closed",
