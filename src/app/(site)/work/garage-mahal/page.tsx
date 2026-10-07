@@ -113,7 +113,7 @@ export default function GarageMahalPage() {
               Live inventory
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              57 vehicles synced from the dealer's system. Shoppers filter by
+              57 vehicles synced from the dealer&apos;s system. Shoppers filter by
               make, body type, fuel type, price, year, and mileage. Every
               listing shows real photos and accurate pricing.
             </p>
