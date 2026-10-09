@@ -5,7 +5,9 @@ import { getDemo } from "@/lib/demos";
 import { WasatchDealsClient } from "./client";
 
 export const metadata: Metadata = {
-  title: "Liquidation & Overstock Deals in Salt Lake City | Wasatch Deals",
+  title: {
+    absolute: "Liquidation & Overstock Deals in Salt Lake City | Wasatch Deals",
+  },
   description:
     "Brand-name home goods, open-box and overstock items up to 70% below retail in Salt Lake City. Local pickup and delivery within 30 miles of SLC.",
   robots: {
