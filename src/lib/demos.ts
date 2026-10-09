@@ -430,11 +430,181 @@ const handymanDirect: DemoData = {
   accentColor: "#2563eb",
 };
 
+const southJordanHandyman: DemoData = {
+  slug: "south-jordan-handyman",
+  businessName: "South Jordan Handyman",
+  trade: "Handyman",
+  city: "South Jordan / West Jordan",
+  serviceArea: "Salt Lake City area",
+  tagline: "Fast response, quality work, fair prices",
+  about:
+    "Mike handles ceiling fans, light fixtures, electrical outlets, smoke detectors, security cameras, dryer vents, drywall repair, carpentry, and dog door installation. Customers mention same-day or 72-hour response times, punctuality, and clean work across the Salt Lake City area.",
+  services: [
+    {
+      title: "Ceiling Fans & Lighting",
+      description:
+        "Ceiling fan installation, light fixture installation, and electrical work.",
+    },
+    {
+      title: "Electrical Work",
+      description:
+        "Outlets, dimmers, smoke detectors, and security camera installation.",
+    },
+    {
+      title: "Vent Service",
+      description:
+        "Exterior vent repair with bird guards and dryer vent cleaning.",
+    },
+    {
+      title: "Carpentry & Repairs",
+      description:
+        "Drywall repair, cabinet pulls, dog door installation, and general carpentry.",
+    },
+  ],
+  rating: 5.0,
+  reviewCount: 144,
+  reviews: [
+    {
+      reviewerName: "Michelle Willis",
+      stars: 5,
+      quote:
+        "I had been looking for someone to help us repair some damaged exterior exhaust vents for months. When I found Mike, he was able to get to our project in less than 72 hours. He was courteous, professional, and did a fantastic job…",
+    },
+    {
+      reviewerName: "Karen Schroyer",
+      stars: 5,
+      quote:
+        "He was courteous, knowledgeable, fair, and clean. Would definitely recommend him for any (honey do) you may have around your home.",
+    },
+    {
+      reviewerName: "Teota Daly",
+      stars: 5,
+      quote:
+        "Mike has done several jobs for me from drywall repair, dog door install, carpentry for my office and installing security cameras. He responds quickly to requests, shows up when he says he will… prices are more than fair.",
+    },
+    {
+      reviewerName: "Cherie",
+      stars: 5,
+      quote:
+        "Mike fixed a vent on the outside of my house that a bird had destroyed and installed cages over both vents so it wouldn't happen again. Quick, quality and reasonably priced work!",
+    },
+    {
+      reviewerName: "Dana Shepherd",
+      stars: 5,
+      quote:
+        "I sent him a text early in the morning needing a time sensitive repair and he replied right back that he could come out the same day.",
+    },
+  ],
+  photos: [
+    {
+      path: "/demo/south-jordan-handyman/01.jpg",
+      alt: "Great room with vaulted ceiling and new ceiling fan",
+      source: "owner" as const,
+    },
+    {
+      path: "/demo/south-jordan-handyman/02.jpg",
+      alt: "Kitchen with pendant lights over a granite island",
+      source: "owner" as const,
+    },
+    {
+      path: "/demo/south-jordan-handyman/03.jpg",
+      alt: "Living room ceiling fan with a light ring over a green accent wall",
+      source: "owner" as const,
+    },
+  ],
+  hours: "Mon–Fri 9am–3pm, Sat–Sun closed",
+  accentColor: "#7c3aed",
+};
+
+const saltLakePyramids: DemoData = {
+  slug: "salt-lake-pyramids",
+  businessName: "Salt Lake Pyramids",
+  trade: "Handyman & Home Repair",
+  city: "Holladay",
+  serviceArea: "Salt Lake City area",
+  tagline: "Professional home repair with attention to detail",
+  about:
+    "Moustafa (Mo) handles window installation, patio and entry door replacement, fence installation, and exterior repairs. Reviews highlight professional work, great value, and careful attention to finishing details.",
+  services: [
+    {
+      title: "Window Installation",
+      description: "Professional window replacement and installation services.",
+    },
+    {
+      title: "Door Replacement",
+      description: "Patio door and entry door replacement and installation.",
+    },
+    {
+      title: "Fence Installation",
+      description: "Custom fence installation for privacy and security.",
+    },
+    {
+      title: "Exterior Repairs",
+      description: "Exterior wall repairs and home exterior improvements.",
+    },
+  ],
+  rating: 5.0,
+  reviewCount: 24,
+  reviews: [
+    {
+      reviewerName: "Blaise Vecchio",
+      stars: 5,
+      quote:
+        "Mo did a great job putting in a window and 3 new patio doors for me. He made sure everything was to my liking. I even had a couple finishing details I didn't expect him to do and he completed them",
+    },
+    {
+      reviewerName: "ahmed alameri",
+      stars: 5,
+      quote:
+        "Great person very professional and really worth the value i will definitely recommend him to my family and friends",
+    },
+    {
+      reviewerName: "mohammed Alwan",
+      stars: 5,
+      quote:
+        "He is so nice guy and good work thank you my place looks beautiful",
+    },
+    {
+      reviewerName: "mohamed Abuzarah",
+      stars: 5,
+      quote:
+        "He was really good and cheap price and I liked his work and I will recommend him for my friends",
+    },
+    {
+      reviewerName: "maycol mayta bastidas",
+      stars: 5,
+      quote:
+        "He is great men he done all I need right and he is clean too thanks moustafa",
+    },
+  ],
+  photos: [
+    {
+      path: "/demo/salt-lake-pyramids/01.jpg",
+      alt: "New wooden privacy fence along a side yard",
+      source: "owner" as const,
+    },
+    {
+      path: "/demo/salt-lake-pyramids/02.jpg",
+      alt: "Before and after: entry door replaced with new French doors",
+      source: "owner" as const,
+    },
+    {
+      path: "/demo/salt-lake-pyramids/03.jpg",
+      alt: "Before and after: exterior wall cleanup with new windows",
+      source: "owner" as const,
+    },
+  ],
+  hours: "Open daily 8am–6pm",
+  accentColor: "#ea580c",
+};
+
 export const demos: Record<string, DemoData> = {
   "sample-roofing": sampleRoofing,
   "nature-cleaning-landscaping": natureCleaningLandscaping,
   "affordable-assistance": affordableAssistance,
   "handyman-direct": handymanDirect,
+  "south-jordan-handyman": southJordanHandyman,
+  "salt-lake-pyramids": saltLakePyramids,
 };
 
 export function getDemo(slug: string): DemoData | undefined {

@@ -217,11 +217,11 @@ export default async function DemoPage({ params }: Props) {
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
               Our Work
             </h2>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 flex flex-wrap justify-center gap-6">
               {demo.photos.slice(1).map((photo, idx) => (
                 <div
                   key={idx}
-                  className="overflow-hidden rounded-xl shadow-md transition hover:shadow-lg"
+                  className="w-full overflow-hidden rounded-xl shadow-md transition hover:shadow-lg sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
                 >
                   <Image
                     src={photo.path}
