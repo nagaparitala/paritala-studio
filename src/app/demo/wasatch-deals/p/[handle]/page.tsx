@@ -38,7 +38,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : product.image;
 
   return {
-    title: `${product.titleFull || product.title} | Wasatch Deals`,
+    title: {
+      absolute: `${product.title} | Wasatch Deals`,
+    },
     description: product.bullets?.join(" • ") || `${product.title} - ${demo.tagline}`,
     robots: {
       index: false,
