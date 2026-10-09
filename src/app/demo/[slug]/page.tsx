@@ -396,10 +396,10 @@ export default async function DemoPage({ params }: Props) {
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
           <div className="rounded-2xl bg-gradient-to-r from-[var(--demo-accent,#d97706)] to-[var(--demo-accent,#b45309)] px-8 py-12 text-center shadow-xl sm:px-12 sm:py-16">
             <h2 className="text-3xl font-bold text-white sm:text-4xl">
-              Ready to work with us?
+              {demo.kind === "store" ? "Like what you see?" : "Ready to work with us?"}
             </h2>
             <p className="mt-4 text-lg text-white/90">
-              Contact us today to discuss your project
+              {demo.kind === "store" ? "Claim this demo site" : "Contact us today to discuss your project"}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a

@@ -705,12 +705,12 @@ const wasatchDeals: DemoData = {
     {
       question: "What does open-box and overstock mean?",
       answer:
-        "Open-box items are products that were returned by customers or used as display models. Overstock items are brand new but retailers had too many. Both come from big retailers at deep discounts.",
+        "Open-box items are customer returns or products with opened packaging. Overstock items are brand new but retailers had too many. Both come from big retailers at deep discounts.",
     },
     {
       question: "Where do your items come from?",
       answer:
-        "We source liquidation, overstock, open-box, and customer-return goods from major retailers. All items are authentic brand-name products.",
+        "We source liquidation, overstock, open-box, and customer-return goods from major retailers.",
     },
     {
       question: "Do you offer delivery?",
