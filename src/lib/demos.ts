@@ -6,13 +6,26 @@ export type DemoData = {
   serviceArea: string;
   tagline: string;
   about: string;
-  services: Array<{
+  kind?: "service" | "store";
+  services?: Array<{
     title: string;
     description: string;
   }>;
-  rating: number;
-  reviewCount: number;
-  reviews: Array<{
+  categories?: Array<string>;
+  products?: Array<{
+    image: string;
+    title: string;
+    price: number;
+    wasPrice?: number;
+  }>;
+  valueProps?: Array<string>;
+  faq?: Array<{
+    question: string;
+    answer: string;
+  }>;
+  rating?: number;
+  reviewCount?: number;
+  reviews?: Array<{
     reviewerName: string;
     stars: number;
     quote: string;
@@ -598,6 +611,129 @@ const saltLakePyramids: DemoData = {
   accentColor: "#ea580c",
 };
 
+const wasatchDeals: DemoData = {
+  slug: "wasatch-deals",
+  businessName: "Wasatch Deals",
+  trade: "Home Goods Reseller",
+  city: "Salt Lake City",
+  serviceArea: "Salt Lake City area",
+  tagline:
+    "Brand-name home goods, open-box and overstock, up to 70% below retail",
+  about:
+    "Locally owned Salt Lake City reseller of liquidation, overstock, open-box and customer-return goods from big retailers. Prices up to 70% below retail. Many items priced OBO (or best offer). Local pickup and delivery within 30 miles of SLC.",
+  kind: "store" as const,
+  categories: [
+    "Home Living",
+    "Home Improvement",
+    "Furniture",
+    "Bath",
+    "Mirrors",
+    "Exercise Equipment",
+    "Auto & Industrial",
+    "Deals under $50",
+  ],
+  products: [
+    {
+      image: "/demo/wasatch-deals/01.jpg",
+      title: "Power glider recliner with USB charging",
+      price: 230,
+      wasPrice: 367,
+    },
+    {
+      image: "/demo/wasatch-deals/02.jpg",
+      title: 'KOHLER Verticyl 17" undermount vanity sink',
+      price: 130,
+    },
+    {
+      image: "/demo/wasatch-deals/03.jpg",
+      title: "Glacier Bay two-handle kitchen faucet",
+      price: 25,
+    },
+    {
+      image: "/demo/wasatch-deals/04.jpg",
+      title: "Cordless blackout roller shade",
+      price: 40,
+    },
+    {
+      image: "/demo/wasatch-deals/05.jpg",
+      title: "Midea 8,000 BTU U-shaped window AC",
+      price: 280,
+    },
+    {
+      image: "/demo/wasatch-deals/06.jpg",
+      title: "5-drawer nightstand with charging station & LED",
+      price: 35,
+    },
+    {
+      image: "/demo/wasatch-deals/07.jpg",
+      title: 'Tribesigns 63" home office desk',
+      price: 120,
+    },
+    {
+      image: "/demo/wasatch-deals/08.jpg",
+      title: 'ROVSUN 23" electric fireplace insert',
+      price: 95,
+    },
+    {
+      image: "/demo/wasatch-deals/09.jpg",
+      title: "SentrySafe fireproof & waterproof home safe",
+      price: 310,
+    },
+    {
+      image: "/demo/wasatch-deals/10.jpg",
+      title: '16" small bathroom vanity with sink (oak)',
+      price: 65,
+    },
+    {
+      image: "/demo/wasatch-deals/11.jpg",
+      title: "SUNCREAT double hammock with stand",
+      price: 120,
+    },
+    {
+      image: "/demo/wasatch-deals/12.jpg",
+      title: "10 ft artificial olive tree",
+      price: 170,
+    },
+  ],
+  valueProps: [
+    "Up to 70% below retail",
+    "Open-box, overstock & customer returns from big retailers",
+    "Many items OBO, make an offer",
+    "Local pickup or delivery within 30 miles of SLC",
+  ],
+  faq: [
+    {
+      question: "What does open-box and overstock mean?",
+      answer:
+        "Open-box items are products that were returned by customers or used as display models. Overstock items are brand new but retailers had too many. Both come from big retailers at deep discounts.",
+    },
+    {
+      question: "Where do your items come from?",
+      answer:
+        "We source liquidation, overstock, open-box, and customer-return goods from major retailers. All items are authentic brand-name products.",
+    },
+    {
+      question: "Do you offer delivery?",
+      answer:
+        "Yes! We offer local pickup in Salt Lake City and delivery within 30 miles of SLC. Contact us to arrange pickup or delivery.",
+    },
+    {
+      question: "What does OBO mean?",
+      answer:
+        'OBO stands for "or best offer." Many of our items are priced OBO, which means we\'re open to reasonable offers. Contact us to discuss pricing.',
+    },
+  ],
+  photos: [
+    {
+      path: "/demo/wasatch-deals/01.jpg",
+      alt: "Power glider recliner",
+      source: "owner" as const,
+    },
+  ],
+  hours: "Contact for hours",
+  accentColor: "#475569",
+};
+
 export const demos: Record<string, DemoData> = {
   "sample-roofing": sampleRoofing,
   "nature-cleaning-landscaping": natureCleaningLandscaping,
@@ -605,6 +741,7 @@ export const demos: Record<string, DemoData> = {
   "handyman-direct": handymanDirect,
   "south-jordan-handyman": southJordanHandyman,
   "salt-lake-pyramids": saltLakePyramids,
+  "wasatch-deals": wasatchDeals,
 };
 
 export function getDemo(slug: string): DemoData | undefined {

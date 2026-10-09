@@ -88,8 +88,8 @@ export default async function DemoPage({ params }: Props) {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-gray-50 to-white">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <div className="flex flex-col justify-center">
+          <div className={demo.kind === "store" ? "" : "grid gap-12 lg:grid-cols-2 lg:gap-16"}>
+            <div className={demo.kind === "store" ? "mx-auto max-w-4xl text-center" : "flex flex-col justify-center"}>
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
                 {demo.businessName}
               </h1>
@@ -100,25 +100,52 @@ export default async function DemoPage({ params }: Props) {
                 {demo.tagline}
               </p>
 
-              <div className="mt-6 flex items-center gap-4">
-                <div className="flex items-center gap-2">
-                  {renderStars(demo.rating)}
-                  <span className="text-sm font-medium text-gray-900">
-                    {demo.rating}
+              {demo.rating && demo.reviewCount && (
+                <div className={`mt-6 flex items-center gap-4 ${demo.kind === "store" ? "justify-center" : ""}`}>
+                  <div className="flex items-center gap-2">
+                    {renderStars(demo.rating)}
+                    <span className="text-sm font-medium text-gray-900">
+                      {demo.rating}
+                    </span>
+                  </div>
+                  <span className="text-sm text-gray-600">
+                    ({demo.reviewCount} reviews)
                   </span>
                 </div>
-                <span className="text-sm text-gray-600">
-                  ({demo.reviewCount} reviews)
-                </span>
-              </div>
+              )}
 
-              {demo.hours && (
+              {demo.hours && demo.kind !== "store" && (
                 <div className="mt-6 text-sm text-gray-700">
                   <span className="font-medium">Hours:</span> {demo.hours}
                 </div>
               )}
 
-              <div className="mt-10">
+              {demo.kind === "store" && (
+                <div className="mt-8 flex items-center justify-center gap-2 text-sm text-gray-600">
+                  <div className="flex items-center gap-4">
+                    <span className="flex items-center gap-2">
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                      </svg>
+                      Shop
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                      Search
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                      Account
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              <div className={`mt-10 ${demo.kind === "store" ? "flex justify-center" : ""}`}>
                 <a
                   href={`mailto:naga@getrefreshstudios.com?subject=Demo Site for ${encodeURIComponent(demo.businessName)}`}
                   className="inline-flex items-center justify-center rounded-lg bg-[var(--demo-accent,#d97706)] px-8 py-3.5 text-base font-semibold text-white shadow-lg transition hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--demo-accent,#d97706)] focus:ring-offset-2"
@@ -128,21 +155,119 @@ export default async function DemoPage({ params }: Props) {
               </div>
             </div>
 
-            <div className="relative">
-              <div className="overflow-hidden rounded-2xl shadow-2xl">
-                <Image
-                  src={demo.photos[0].path}
-                  alt={demo.photos[0].alt}
-                  width={800}
-                  height={600}
-                  className="w-full object-cover"
-                  priority
-                />
+            {demo.kind !== "store" && demo.photos.length > 0 && (
+              <div className="relative">
+                <div className="overflow-hidden rounded-2xl shadow-2xl">
+                  <Image
+                    src={demo.photos[0].path}
+                    alt={demo.photos[0].alt}
+                    width={800}
+                    height={600}
+                    className="w-full object-cover"
+                    priority
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
+
+      {/* Categories Section (Store only) */}
+      {demo.kind === "store" && demo.categories && (
+        <section className="border-t border-gray-200 bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+            <div className="flex flex-wrap justify-center gap-3">
+              {demo.categories.map((category) => (
+                <span
+                  key={category}
+                  className="rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:border-[var(--demo-accent,#d97706)] hover:text-[var(--demo-accent,#d97706)]"
+                  aria-disabled="true"
+                >
+                  {category}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Products Section (Store only) */}
+      {demo.kind === "store" && demo.products && (
+        <section className="border-t border-gray-200 bg-gray-50">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Featured Deals
+            </h2>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {demo.products.map((product, idx) => (
+                <div
+                  key={idx}
+                  className="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition hover:shadow-lg"
+                >
+                  <div className="relative aspect-square overflow-hidden bg-gray-100">
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      width={400}
+                      height={400}
+                      className="h-full w-full object-cover transition group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+                      {product.title}
+                    </h3>
+                    <div className="mt-2 flex items-baseline gap-2">
+                      <span className="text-lg font-bold text-gray-900">
+                        ${product.price}
+                      </span>
+                      {product.wasPrice && (
+                        <span className="text-sm text-gray-500 line-through">
+                          ${product.wasPrice}
+                        </span>
+                      )}
+                    </div>
+                    <button
+                      type="button"
+                      aria-disabled="true"
+                      className="mt-4 w-full rounded-lg bg-[var(--demo-accent,#d97706)] px-4 py-2.5 text-sm font-semibold text-white opacity-60"
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Value Props (Store only) */}
+      {demo.kind === "store" && demo.valueProps && (
+        <section className="border-t border-gray-200 bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {demo.valueProps.map((prop, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <svg
+                    className="h-6 w-6 flex-shrink-0 text-[var(--demo-accent,#d97706)]"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-sm text-gray-700">{prop}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* About Section */}
       <section className="border-t border-gray-200 bg-white">
@@ -153,65 +278,94 @@ export default async function DemoPage({ params }: Props) {
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-gray-700">
             {demo.about}
           </p>
-          <p className="mt-4 text-base text-gray-600">
-            Serving {demo.serviceArea}
-          </p>
+          {demo.serviceArea && (
+            <p className="mt-4 text-base text-gray-600">
+              Serving {demo.serviceArea}
+            </p>
+          )}
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="border-t border-gray-200 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Our Services
-          </h2>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {demo.services.map((service) => (
-              <div
-                key={service.title}
-                className="rounded-xl bg-white p-6 shadow-md transition hover:shadow-lg"
-              >
-                <h3 className="text-lg font-semibold text-gray-900">
-                  {service.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                  {service.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews Section */}
-      <section className="border-t border-gray-200 bg-white">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Customer Reviews
-          </h2>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {demo.reviews.map((review, idx) => (
-              <div
-                key={idx}
-                className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-medium text-gray-900">
-                    {formatReviewerName(review.reviewerName)}
-                  </span>
-                  {renderStars(review.stars)}
+      {/* Services Section (Service businesses only) */}
+      {demo.kind !== "store" && demo.services && (
+        <section className="border-t border-gray-200 bg-gray-50">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Our Services
+            </h2>
+            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {demo.services.map((service) => (
+                <div
+                  key={service.title}
+                  className="rounded-xl bg-white p-6 shadow-md transition hover:shadow-lg"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                    {service.description}
+                  </p>
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-gray-700">
-                  &ldquo;{review.quote}&rdquo;
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Photo Gallery */}
-      {demo.photos.length > 1 && (
+      {/* FAQ Section (Store only) */}
+      {demo.kind === "store" && demo.faq && (
+        <section className="border-t border-gray-200 bg-gray-50">
+          <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Frequently Asked Questions
+            </h2>
+            <div className="mt-12 space-y-8">
+              {demo.faq.map((item, idx) => (
+                <div key={idx}>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {item.question}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-gray-700">
+                    {item.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Reviews Section (Service businesses only) */}
+      {demo.kind !== "store" && demo.reviews && (
+        <section className="border-t border-gray-200 bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Customer Reviews
+            </h2>
+            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {demo.reviews.map((review, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium text-gray-900">
+                      {formatReviewerName(review.reviewerName)}
+                    </span>
+                    {renderStars(review.stars)}
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-gray-700">
+                    &ldquo;{review.quote}&rdquo;
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Photo Gallery (Service businesses only) */}
+      {demo.kind !== "store" && demo.photos.length > 1 && (
         <section className="border-t border-gray-200 bg-gray-50">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
